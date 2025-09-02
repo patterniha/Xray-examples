@@ -8,21 +8,44 @@
 // It doesn't change your local IP, so it is not suitable for anonymity.
 
 {
+  "version": {
+    "min": "25.9.2"
+  },
   "log": {
     "loglevel": "warning", "dnsLog": false, "access": "none"
   },
 
   "dns":{
     "hosts": {
-      "geosite:category-ads-all": ["10.10.34.36", "2001:4188:2:600:10:10:34:36"],
+      "geosite:category-ads-all": "#3",
       "dns.cloudflare.com": "cloudflare.com"
     },
     "servers": [
-      "https://dns.cloudflare.com/dns-query",
-      {"address": "localhost", "domains": ["geosite:private", "geosite:category-ir", "full:cloudflare.com"]}
+      {
+        "address": "fakedns",
+        "domains": ["domain:ir", "geosite:private", "geosite:ir", "full:cloudflare.com", "domain:dynx.pro", "geosite:sanctioned"],
+        "finalQuery": true
+      },
+      {
+        "address": "https://dns.cloudflare.com/dns-query",
+        "tag": "no-filter-dns",
+        "finalQuery": true
+      },
+      {
+        "address": "localhost",
+        "domains": ["domain:ir", "geosite:private", "geosite:ir", "full:cloudflare.com", "domain:dynx.pro"],
+        "finalQuery": true
+      },
+      {
+        "address": "https://anti-ban.dynx.pro/dns-query",  // or "10.70.95.150" or "10.70.95.162" or "quic+local://anti-ban.dynx.pro"; dynx Iran Anti-Sanctions DNS
+        "domains": ["geosite:sanctioned"],
+        "expectedIPs": ["10.70.95.150", "10.70.95.162", "10.70.95.170"], // dynx servers
+        "tag": "anti-sanction-dns",
+        "finalQuery": false
+      }
     ],
-    "tag": "dns-query",
-    "disableFallback": true
+    "queryStrategy": "UseSystem",
+    "useSystemHosts": true
   },
   
   "inbounds": [
