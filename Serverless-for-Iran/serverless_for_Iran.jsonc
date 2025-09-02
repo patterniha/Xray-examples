@@ -17,7 +17,6 @@
       "geosite:category-ads-all": ["10.10.34.36", "2001:4188:2:600:10:10:34:36"],
       "dns.cloudflare.com": "cloudflare.com"
     },
-    
     "servers": [
       "https://dns.cloudflare.com/dns-query",
       {"address": "localhost", "domains": ["geosite:private", "geosite:category-ir", "full:cloudflare.com"]}
