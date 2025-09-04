@@ -9,7 +9,7 @@
 
 {
   "version": {
-    "min": "25.9.2"
+    "min": "25.9.4"
   },
   "log": {
     "loglevel": "warning", "dnsLog": false, "access": "none"
@@ -37,9 +37,10 @@
         "finalQuery": true
       },
       {
-        "address": "https://anti-ban.dynx.pro/dns-query",  // or "10.70.95.150" or "10.70.95.162" or "quic+local://anti-ban.dynx.pro"; dynx Iran Anti-Sanctions DNS
-        "domains": ["geosite:sanctioned"],
-        "expectedIPs": ["10.70.95.150", "10.70.95.162", "10.70.95.170"], // dynx servers
+        "address": "https://anti-ban.dynx.pro/dns-query",  // or any anti-sanction DNS
+        "domains": ["geosite:sanctioned"], // if this list is incomplete, put anti-sanction DNS in second place(after fakedns)
+        "expectedIPs": ["10.70.95.150", "10.70.95.162", "10.70.95.170"], // optional, anti-sanction DNS servers
+        "unexpectedIPs": ["geosite:irgfw-all-injected-ips", "0.0.0.0", "::", "127.0.0.1", "::1"],
         "tag": "anti-sanction-dns",
         "finalQuery": false
       }
