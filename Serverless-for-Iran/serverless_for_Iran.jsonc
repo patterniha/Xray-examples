@@ -145,44 +145,35 @@
       }
     },
     {
-      "tag": "udp-noisesv4",
+      "tag": "udp-noises",
       "protocol": "direct",
       "settings": {
         "domainStrategy": "ForceIPv4",
         "noises": [
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"},
-          {"type": "rand", "packet": "1250", "delay": "10"}, {"type": "rand", "packet": "1250", "delay": "10"}
-        ]
-      }
-    },
-    {
-      "tag": "udp-noisesv6",
-      "protocol": "direct",
-      "settings": {
-        "domainStrategy": "ForceIPv6",
-        "noises": [
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"},
-          {"type": "rand", "packet": "1230", "delay": "10"}, {"type": "rand", "packet": "1230", "delay": "10"}
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"},
+          {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}, {"type": "rand", "packet": "1230", "delay": "10", "applyTo": "ipv6"}
         ]
       }
     }
@@ -207,16 +198,16 @@
        "ip": ["10.10.34.0/24", "2001:4188:2:600:10:10:34:36", "2001:4188:2:600:10:10:34:35", "2001:4188:2:600:10:10:34:34"]
       },
       {"outboundTag": "direct",
-       "domain": ["geosite:private", "geosite:category-ir"]
+       "domain": ["geosite:private", "geosite:ir"]
       },
       {"outboundTag": "direct",
        "ip": ["geoip:private", "geoip:ir"]
       },
-      {"outboundTag": "udp-noisesv4",
-       "network": "udp", "ip": ["0.0.0.0/0"], "port": 443
+      {"outboundTag": "udp-noises",
+       "network": "udp", "port": 443
       },
-      {"outboundTag": "udp-noisesv6",
-       "network": "udp", "ip": ["::/0"], "port": 443
+      {"outboundTag": "udp-noises",
+       "network": "udp", "protocol": ["quic"]
       },
       {"outboundTag": "direct",
        "network": "udp"
