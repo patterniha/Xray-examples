@@ -1,18 +1,29 @@
 // Configs here can not contain "bypassing sanctions" contents (inappropriate on US GitHub)
 // Please join the official Xray Iranian group https://t.me/projectXhttp to get the whole working configs
 
-// Serverless for Iran v4
-// Xray-core v25.2.21+
+// Serverless for Iran v5
+// Xray-core v25.9.5+
 
 // Bypass censorship using TCP/TLS fragment and UDP noises.
 // It doesn't change your local IP, so it is not suitable for anonymity.
 
 {
+
   "version": {
-    "min": "25.9.4"
+    "min": "25.9.5"
   },
+
   "log": {
     "loglevel": "warning", "dnsLog": false, "access": "none"
+  },
+
+  "policy": {
+    "levels": {
+      "0": {
+        "uplinkOnly": 0,
+        "downlinkOnly": 0
+      }
+    }
   },
 
   "dns":{
@@ -148,7 +159,7 @@
       "tag": "udp-noises",
       "protocol": "direct",
       "settings": {
-        "domainStrategy": "ForceIPv4",
+        "domainStrategy": "ForceIP",
         "noises": [
           {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
           {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"}, {"type": "rand", "packet": "1250", "delay": "10", "applyTo": "ipv4"},
