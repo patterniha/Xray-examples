@@ -53,8 +53,7 @@
         "tag": "anti-sanction-dns",
         "address": "https://anti-ban.dynx.pro/dns-query",  // or any anti-sanction DNS
         "domains": ["geosite:sanctioned"], // if this list is incomplete, put anti-sanction DNS in second place(after fakedns)
-        "expectedIPs": ["10.70.95.150", "10.70.95.162", "10.70.95.170"], // optional, anti-sanction DNS relay servers
-        "unexpectedIPs": ["geosite:irgfw-all-injected-ips", "0.0.0.0", "::", "127.0.0.1", "::1"],
+        "unexpectedIPs": ["geoip:irgfw-all-injected-ips", "0.0.0.0", "::", "127.0.0.1", "::1"],
         "timeoutMs": 2000,
         "finalQuery": false
       }
@@ -70,7 +69,7 @@
       "port": 10853,
       "protocol": "tunnel",
       "settings": {
-        "address": "1.1.1.1",
+        "address": "one.one.one.one",
         "port": 53,
         "network": "tcp,udp"
       },
@@ -130,12 +129,12 @@
       "settings": {"nonIPQuery": "skip", "network": "tcp", "address": "one.one.one.one", "port": 53},
       "streamSettings": {
         "sockopt": {
-          "dialerProxy": "full-fragment"
+          "dialerProxy": "tcp-full-fragment"
         }
       }
     },
     {
-      "tag": "tls-fragment",
+      "tag": "tls-full-fragment",
       "protocol": "direct",
       "settings": {
         "fragment": {
@@ -146,19 +145,19 @@
       },
       "streamSettings": {
         "sockopt": {
-          "dialerProxy": "full-fragment"
+          "dialerProxy": "tcp-full-fragment"
         }
       }
     },
     {
-      "tag": "full-fragment",
+      "tag": "tcp-full-fragment",
       "protocol": "direct",
       "settings": {
         "fragment": {
           "packets": "1-1",
           "length": "1",
-          "interval": "2",
-          "maxSplit": "517"
+          "interval": "1",
+          "maxSplit": "1026"
         }
       },
       "streamSettings": {
@@ -211,29 +210,32 @@
   "routing": {
     "domainStrategy": "IPOnDemand",
     "rules": [
+      {"outboundTag": "block-out",
+        "domain": ["geosite:category-ads-all"]
+      },
       {"outboundTag": "dns-out",
        "inboundTag": ["dns-in"]
       },
       {"outboundTag": "dns-out",
        "inboundTag": ["socks-in"], "port": 53
       },
-      {"outboundTag": "chain1-fragment",  // or "super-fragment"
-       "inboundTag": ["dns-query"]
+      {"outboundTag": "direct-out",
+       "inboundTag": ["anti-sanction-dns"]
       },
-      {"outboundTag": "block",
-       "domain": ["geosite:category-ads-all"]
+      {"outboundTag": "tls-full-fragment",  // or "tcp-full-fragment"
+        "inboundTag": ["no-filter-dns"]
       },
-      {"outboundTag": "block",
-       "ip": ["10.10.34.0/24", "2001:4188:2:600:10:10:34:36", "2001:4188:2:600:10:10:34:35", "2001:4188:2:600:10:10:34:34"]
+      {"outboundTag": "block-out",
+       "ip": ["geoip:irgfw-block-injected-ips", "0.0.0.0", "::"]
       },
-      {"outboundTag": "direct",
-       "domain": ["geosite:private", "geosite:ir"]
+      {"outboundTag": "direct-out",
+       "domain": ["domain:ir", "geosite:private", "geosite:ir", "domain:dynx.pro"]
       },
-      {"outboundTag": "direct",
+      {"outboundTag": "direct-out",
        "ip": ["geoip:private", "geoip:ir"]
       },
       {"outboundTag": "udp-noises",
-       "network": "udp", "port": 443
+       "network": "udp", "port": "443,51820,1194,500,1701,4500"
       },
       {"outboundTag": "udp-noises",
        "network": "udp", "protocol": ["quic"]
@@ -241,8 +243,11 @@
       {"outboundTag": "direct-out",
        "network": "udp"
       },
-      {"outboundTag": "chain1-fragment",  // or "super-fragment"
-       "network": "tcp"
+      {"outboundTag": "tls-full-fragment",  // or "tcp-full-fragment"
+       "network": "tcp", "protocol": ["tls"]
+      },
+      {"outboundTag": "tcp-full-fragment",
+        "network": "tcp"
       }
     ]
   }
